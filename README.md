@@ -1,4 +1,4 @@
-# Video Player using Video.js 
+# Video Player using Video.js and ImageKit
 
 This project is a sample Video.js based streaming player used to test and demonstrate playback for
 
