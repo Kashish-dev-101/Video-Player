@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+}
+
+.header {
+  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+  background-size: cover;
+  background-position: center;
+  height: 280px;
+  position: relative;
+  color: white;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.branding h1 {
+  font-size: 2rem;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+}
+
+#video-url {
+  width: 70%;
+  max-width: 620px;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+
+.controls {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.format-options {
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1rem;
+}
+
+button#play-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button#play-btn:hover {
+  background-color: #0056b3;
+}
+
+.video-container {
+  max-width: 860px;
+  margin: 0 auto 60px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+/* Style the Video.js player wrapper */
+.video-js {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Ensure the internal video keeps proper aspect */
+.video-js .vjs-tech {
+  object-fit: contain;
+}
+
+/* Keep control bar visible and clickable */
+.video-js .vjs-control-bar {
+  z-index: 2;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #fff;
+  color: #555;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+.site-footer a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}

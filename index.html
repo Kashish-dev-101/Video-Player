@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamIt - Video Tester</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css"
+      rel="stylesheet"
+    />
+
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="overlay">
+        <div class="branding">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
+            alt="logo"
+            class="logo"
+          />
+          <h1>StreamIt</h1>
+        </div>
+        <p>Enter a video URL and choose a format</p>
+        <input
+          type="text"
+          id="video-url"
+          placeholder="Paste video URL (mp4, m3u8, mpd)..."
+        />
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="format-options">
+        <label>
+          <input type="radio" name="format" value="mp4" checked />
+          Progressive (MP4)
+        </label>
+
+        <label>
+          <input type="radio" name="format" value="adaptive" />
+          Adaptive Streaming (.m3u8/.mpd)
+        </label>
+      </div>
+
+      <button id="play-btn">Play Video</button>
+    </section>
+
+    <section class="video-container">
+      <video
+        id="video-player"
+        class="video-js vjs-theme-forest"
+        playsinline
+      ></video>
+    </section>
+
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dashjs@3.2.2/dist/dash.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-dash@2.11.0/dist/videojs-dash.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.1.0/dist/videojs-contrib-quality-levels.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/videojs-http-source-selector@1.1.6/dist/videojs-http-source-selector.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <footer class="site-footer">
+      <p>
+        Developed with ❤️ by <strong>Ashish</strong> — Video Player powered by
+        <a href="https://videojs.com/" target="_blank">video.js</a>
+      </p>
+    </footer>
+  </body>
+</html>
