@@ -3,6 +3,7 @@
 const urlInput = document.querySelector("#video-url");
 const playBtn = document.querySelector("#play-btn");
 
+// Video.js player setup
 const player = videojs("video-player", {
   controls: true,
   autoplay: false,
@@ -29,9 +30,17 @@ const player = videojs("video-player", {
   },
 });
 
+// State flags for quality selector management
+// ============================================
+// Tracks whether the quality selector plugin has been initialized for the current video source.
+// Prevents duplicate initialization when the same source triggers multiple 'loadedmetadata' events.
 let selectorReadyForThisSource = false;
+
+// Stores the original video URL to extract query parameters (e.g., resolution info)
+// Used to dynamically relabel quality menu options based on the source URL structure.
 let lastVideoUrlForLabels = "";
 
+// Detect video type from URL and selected format
 function detectType(videoURL, selectedFormat) {
   const clean = videoURL.split("?")[0].toLowerCase();
   const ext = clean.split(".").pop();
@@ -51,6 +60,8 @@ function detectType(videoURL, selectedFormat) {
   return { error: "Please select a valid format." };
 }
 
+// Parse sr- heights from URL query parameters
+
 function parseSrHeightsFromUrl(videoURL) {
   try {
     const url = new URL(videoURL);
@@ -68,6 +79,7 @@ function parseSrHeightsFromUrl(videoURL) {
   }
 }
 
+// Find closest target height
 function closestTargetHeight(actualHeight, targets) {
   if (!targets.length) return actualHeight;
 
@@ -85,6 +97,8 @@ function closestTargetHeight(actualHeight, targets) {
   return best;
 }
 
+// Relabels the quality selector menu items based on `sr-` (streaming resolution) parameters in the video URL.
+// Maps the player's default quality labels (e.g., 360p, 720p) to the actual resolutions defined in the URL.
 function applySrLabelsFromUrl(videoURL) {
   const targets = parseSrHeightsFromUrl(videoURL);
   if (!targets.length) return;
@@ -110,6 +124,8 @@ function applySrLabelsFromUrl(videoURL) {
   });
 }
 
+// Conditionally initializes the quality selector plugin for ABR (Adaptive Bitrate) streams.
+// Only activates when: the plugin is available, qualityLevels exist, and multiple renditions are present.
 function initHttpSourceSelectorIfPossible() {
   if (selectorReadyForThisSource) return;
 
@@ -145,6 +161,8 @@ function initHttpSourceSelectorIfPossible() {
   }
 }
 
+// Player ready callback and event bindings for quality selector initialization
+
 player.ready(() => {
   if (typeof player.qualityLevels === "function") {
     const levels = player.qualityLevels();
@@ -173,12 +191,13 @@ player.ready(() => {
   });
 });
 
+// Play button click handler
 playBtn.addEventListener("click", () => {
   const videoURL = urlInput.value.trim();
   if (!videoURL) return;
 
   const selectedFormat = document.querySelector(
-    'input[name="format"]:checked'
+    'input[name="format"]:checked',
   )?.value;
   if (!selectedFormat) return;
 
