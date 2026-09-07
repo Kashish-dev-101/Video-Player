@@ -1,0 +1,3 @@
+[submodule "imagekit-player-sdk"]
+	path = imagekit-player-sdk
+	url = https://github.com/Kashish-dev-101/imagekit-stream-tester.git
